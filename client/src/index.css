@@ -9,9 +9,9 @@ html {
 .bg-hero {
   background-image: url("./assets/Hero.png");
 }
-.bg-newarrivals: {
+.bg-newarrivals {
   background-image: "url('./src/assets/newArrivles.jpg')";
 }
-.bg-discount: {
+.bg-discount {
   background-image: "url('./src/assets/discounts.jpeg')";
 }

@@ -1,8 +1,8 @@
 export default function NewArrivals() {
   return (
     <div
-      className=" relative m-auto my-16 flex h-[350px] w-11/12 overflow-hidden
-      rounded-lg   bg-NewArrivals bg-cover bg-center   bg-no-repeat md:w-full"
+      className=" bg-newArrivals relative m-auto my-16 flex h-[350px] w-11/12
+      overflow-hidden  rounded-lg bg-cover bg-center   bg-no-repeat md:w-full"
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-[rgba(10,10,10,0.65)] text-white">
         <h1 className=" text-center text-3xl font-bold leading-relaxed  md:text-5xl  md:leading-loose    ">

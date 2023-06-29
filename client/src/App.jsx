@@ -4,6 +4,7 @@ import Hero from "./components/hero/Hero";
 import NavBar from "./components/nav/Navbar";
 import NewArrivals from "./components/newArrivals/NewArrivals";
 import ShopByCollection from "./components/shopByCollection/ShopByCollection";
+import Opinions from "./components/Opinions/Opinions";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <NewArrivals />
         <ShopByCollection />
         <DiscountBanner />
+        <Opinions />
       </div>
     </>
   );

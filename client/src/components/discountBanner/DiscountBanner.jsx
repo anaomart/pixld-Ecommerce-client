@@ -11,7 +11,7 @@ export default function DiscountBanner() {
        bg-[rgba(255,255,255,0.65)]
        "
       >
-        <h1 className=" text-center text-3xl font-bold leading-relaxed  md:text-5xl  md:leading-loose    ">
+        <h1 className=" text-center text-3xl font-bold leading-relaxed  md:text-4xl  md:leading-loose    ">
           Exclusive discounts for members
         </h1>
         <p className="my-4 w-4/5 text-center text-base  md:text-lg">

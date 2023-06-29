@@ -27,7 +27,7 @@ export default function SwiperComponent() {
       {images && (
         <Swiper
           className="mb-3 overflow-hidden"
-          spaceBetween={50}
+          spaceBetween={100}
           slidesPerView={1}
           breakpoints={{
             640: {

@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <div
-      className={` flex h-screen w-screen flex-col items-center justify-center bg-hero bg-cover  bg-center bg-no-repeat object-cover
+      className={` flex h-screen w-screen flex-col items-center justify-center bg-[url(./src/assets/Hero.png)] bg-cover  bg-center bg-no-repeat object-cover
       text-white
       `}
     >

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Card from "./Card.jsx";
 import person1 from "../../assets/opinions/person1.jpeg";
 import person2 from "../../assets/opinions/person2.jpeg";
@@ -21,9 +22,11 @@ export default function Opinions() {
     },
   ];
   return (
-    <div>
-      <h3 className="my-10 text-3xl font-bold">Our member's opinion </h3>
-      <div className="flex gap-4">
+    <div className="p-2">
+      <h3 className="my-10 text-center text-3xl font-bold md:text-left">
+        Our member's opinion{" "}
+      </h3>
+      <div className="grid  grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {opinions.map(({ name, image, text }) => (
           <Card name={name} image={image} text={text} key={name} />
         ))}

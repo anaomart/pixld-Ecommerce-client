@@ -80,11 +80,11 @@ export default function NavBar() {
   };
   return (
     <nav
-      className="   fixed z-20 flex
-      w-full
-      items-center bg-white
-      px-6 py-1 md:mt-3
-      md:w-4/5 md:rounded-xl"
+      className="  fixed z-20 flex w-full
+      items-center
+      bg-white px-6
+      py-2 md:mt-3 md:w-4/5
+      md:rounded-xl md:py-1"
     >
       {/* Left */}
       <div className=" flex flex-1 items-center gap-3">

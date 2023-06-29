@@ -5,6 +5,7 @@ import NavBar from "./components/nav/Navbar";
 import NewArrivals from "./components/newArrivals/NewArrivals";
 import ShopByCollection from "./components/shopByCollection/ShopByCollection";
 import Opinions from "./components/opinions/Opinions";
+import Footer from "./components/footer/Footer";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
         <ShopByCollection />
         <DiscountBanner />
         <Opinions />
+        <Footer/>
       </div>
     </>
   );

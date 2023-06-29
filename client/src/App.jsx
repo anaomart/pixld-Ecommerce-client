@@ -4,8 +4,7 @@ import Hero from "./components/hero/Hero";
 import NavBar from "./components/nav/Navbar";
 import NewArrivals from "./components/newArrivals/NewArrivals";
 import ShopByCollection from "./components/shopByCollection/ShopByCollection";
-import Opinions from "./components/Opinions/Opinions";
-
+import Opinions from "./components/opinions/Opinions";
 function App() {
   return (
     <>

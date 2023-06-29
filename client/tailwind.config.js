@@ -7,6 +7,8 @@ export default {
     extend: {
       backgroundImage: {
         hero: `url(./src/assets/Hero.png)`,
+        NewArrivals: "url(./src/assets/newArrivles.jpg)",
+        discount: "url(./src/assets/discounts.jpeg)",
       },
       colors: {
         dark: {

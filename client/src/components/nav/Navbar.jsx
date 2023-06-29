@@ -99,8 +99,8 @@ export default function NavBar() {
 
           {printCurrencyChange()}
 
-          <p className="font-medium text-dark-100 ">Sign in</p>
-          <p className="font-medium text-dark-100">sign Up</p>
+          <p className="font-medium text-dark-100 ">Sign In</p>
+          <p className="font-medium text-dark-100">Sign Up</p>
         </div>
       </div>
       {/* Mobile */}

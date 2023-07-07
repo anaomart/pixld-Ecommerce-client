@@ -8,6 +8,7 @@ import {
 import { BsFillBagFill } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const [menuButtonClicked, setMenuButtonClicked] = useState(false);
@@ -87,8 +88,10 @@ export default function NavBar() {
       md:rounded-xl md:py-1"
     >
       {/* Left */}
-      <div className=" flex flex-1 items-center gap-3">
-        <h2 className="mr-2 text-lg font-semibold">Pixld E-Commerce</h2>
+      <div className=" flex  flex-1 items-center gap-3">
+        <Link to="/" className=" text-4xl font-bold">
+          Pixld{" "}
+        </Link>
         <div className=" hidden  gap-9 lg:flex">{printMainPages()}</div>
       </div>
       {/* Right */}

@@ -1,27 +1,15 @@
-import SwiperComponent from "./components/Swiper/SwiperComponent";
-import DiscountBanner from "./components/discountBanner/DiscountBanner";
-import Hero from "./components/hero/Hero";
-import NavBar from "./components/nav/Navbar";
-import NewArrivals from "./components/newArrivals/NewArrivals";
-import ShopByCollection from "./components/shopByCollection/ShopByCollection";
-import Opinions from "./components/opinions/Opinions";
-import Footer from "./components/footer/Footer";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import ProductsDisplay from "./pages/productsDisplay/ProductsDisplay";
+import ScrollToTop from "./utils/ScrollTop";
 function App() {
   return (
-    <>
-      <div className=" md:m-auto md:w-10/12">
-        <NavBar />
-      </div>
-      <Hero />
-      <div className=" md:m-auto md:w-10/12">
-        <SwiperComponent />
-        <NewArrivals />
-        <ShopByCollection />
-        <DiscountBanner />
-        <Opinions />
-        <Footer/>
-      </div>
-    </>
+    <ScrollToTop>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:category" element={<ProductsDisplay />} />
+      </Routes>
+    </ScrollToTop>
   );
 }
 

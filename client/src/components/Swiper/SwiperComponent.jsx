@@ -6,15 +6,20 @@ import Aromatherapy from "../../assets/Aromatherapy.jpeg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import { BsArrowRight } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../../utils/fetchMethods";
+import { Link } from "react-router-dom";
+import Loading from "../../utils/Loading";
 export default function SwiperComponent() {
-  const images = [
-    { image: Watches, name: "Watches" },
-    { image: Decor, name: "Decor" },
-    { image: furniture, name: "Furniture" },
-    { image: Aromatherapy, name: "Aromatherapy" },
-    { image: Chairs, name: "Chairs" },
-  ];
+  const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+    async function getCategories() {
+      const categories = await publicRequest.get("/category");
+      setCategories(categories.data);
+    }
+    getCategories();
+  }, []);
   return (
     <section>
       <div className="my-7  flex flex-col items-center justify-center gap-3  md:flex-row md:justify-between ">
@@ -24,7 +29,7 @@ export default function SwiperComponent() {
         </a>
       </div>
 
-      {images && (
+      {categories.length !== 0 ? (
         <Swiper
           className="mb-3 overflow-hidden"
           spaceBetween={50}
@@ -44,20 +49,24 @@ export default function SwiperComponent() {
             },
           }}
         >
-          {images.map(({ image, name }) => (
+          {categories.map(({ image, name, slug }) => (
             <SwiperSlide key={image}>
-              <div className=" relative  m-auto h-96 w-60 rounded-lg  text-center md:m-0 ">
-                <img
-                  src={image}
-                  className="h-full w-full rounded-2xl bg-center object-cover "
-                />
-                <h2 className="absolute bottom-3 left-[50%] translate-x-[-50%] text-2xl font-bold text-white">
-                  {name}
-                </h2>
-              </div>
+              <Link to={`/category/${slug}`}>
+                <div className=" relative  m-auto h-96 w-60 rounded-lg  text-center md:m-0 ">
+                  <img
+                    src={image}
+                    className="h-full w-full rounded-2xl bg-center object-cover "
+                  />
+                  <h2 className="absolute bottom-3 left-[50%] w-full translate-x-[-50%] text-2xl font-bold text-white">
+                    {name}
+                  </h2>
+                </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
+      ) : (
+        <Loading />
       )}
     </section>
   );

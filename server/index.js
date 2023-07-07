@@ -7,17 +7,19 @@ let morgan = require('morgan');
 const AppError = require('./src/utils/AppError');
 const dbConnection = require('./src/database/dbConnection');
 const GlobalMiddleware = require('./src/utils/globalMiddleWareError.js');
-
+const cors = require('cors')
 
 // Middleware
-
+app.use(cors())
 app.use(express.json());
 if (process.env.NODE_ENV = "DEVELOPMENT") {
     app.use(morgan('dev'));
 }
 // Routes 
+app.use("/api/v1/user", require("./src/components/user/user.api"));
 app.use("/api/v1/category", require("./src/components/category/category.api"));
 app.use("/api/v1/subcategory", require("./src/components/subcategory/subcategory.api"));
+app.use("/api/v1/product", require("./src/components/product/product.api"));
 
 
 

@@ -11,14 +11,16 @@ cloudinary.config({
     api_secret: process.env.cloudinary_api_secret
 });
 exports.createCategory = catchAsyncError(async(req, res, next) => {
-    console.log(req.body)
     if (!req.body.name & !req.body.image) return next(new AppError("Please Enter Name and Image", 406));
 
     cloudinary.v2.uploader.upload(req.file.path, async(err, result) => {
-        const categoryExist = CategoryModel.find({ name: req.body.name })
+        console.log({ file: req.file.path, rFile: req.file })
+        const categoryExist = await CategoryModel.findOne({ name: req.body.name })
+        console.log({ name: req.body.name }, categoryExist)
+        console.log(!![])
         if (categoryExist) return next(new AppError("Category already exists", 406))
         req.body.slug = slugify(req.body.name);
-        req.body.image = result.secure_url;
+        req.body.image = result.secure_url; ///////////////////////////////////
         let category = new CategoryModel(req.body)
         await category.save();
         res.status(200).json({ message: "Category created successfully", category })

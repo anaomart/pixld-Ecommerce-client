@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { publicRequest } from "../../utils/fetchMethods";
 import Loading from "../../utils/Loading";
 export default function ProductsDisplay() {
+  const [activePage, setActivePage] = useState(1);
   const { category } = useParams();
   const [subCategories, setSubCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -16,12 +17,12 @@ export default function ProductsDisplay() {
     async function getCategories() {
       const subcategory = await publicRequest.get("/subcategory");
       setSubCategories(subcategory.data.Message);
-      const products = await publicRequest.get("/product");
+      const products = await publicRequest.get(`/product?page=${activePage}`);
       console.log(products);
       setProducts(products.data.Products);
     }
     getCategories();
-  }, []);
+  }, [activePage]);
   return (
     <section className="  px-4  py-3 md:m-auto md:w-10/12 ">
       <div className=" flex justify-between  py-3 ">
@@ -36,9 +37,9 @@ export default function ProductsDisplay() {
         </div>
       </div>
 
-      <div className="flex gap-8">
+      <div className="flex flex-col gap-8 md:flex-row ">
         {/* main */}
-        <div className=" flex-1 ">
+        <div className=" m-auto flex flex-1 gap-4 text-center md:m-0 md:flex-col md:gap-0 ">
           {/* first */}
           {subCategories.length !== 0 ? (
             subCategories.map(({ name }) => <Accordion name={name} />)
@@ -68,7 +69,8 @@ export default function ProductsDisplay() {
               <Loading />
             )}
           </div>
-          <Pagination />
+
+          <Pagination active={activePage} setActivePage={setActivePage} />
         </div>
       </div>
     </section>

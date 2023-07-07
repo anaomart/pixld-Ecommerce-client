@@ -1,44 +1,37 @@
 import React from "react";
 
-export default function Pagination() {
+export default function Pagination({ active, setActivePage }) {
   return (
-    <div className="m-auto  w-4/5 ">
+    <div className="m-auto  md:w-4/5 ">
       <div className="join flex items-center justify-between">
         <div>
-          <button className="btn-outline join-item btn mr-auto">
+          <button
+            className="btn-outline join-item btn mr-auto"
+            onClick={() => setActivePage(active - 1)}
+          >
             Previous page
           </button>
         </div>
         <div>
           <div className="join">
-            <input
-              className="btn-square join-item btn"
-              type="radio"
-              name="options"
-              aria-label="1"
-              checked
-            />
-            <input
-              className="btn-square join-item btn"
-              type="radio"
-              name="options"
-              aria-label="2"
-            />
-            <input
-              className="btn-square join-item btn"
-              type="radio"
-              name="options"
-              aria-label="3"
-            />
-            <input
-              className="btn-square join-item btn"
-              type="radio"
-              name="options"
-              aria-label="4"
-            />
+            {Array.from(Array(5)).map((num, index) => (
+              <input
+                className="btn-square join-item btn"
+                type="radio"
+                name="options"
+                aria-label={index + 1}
+                checked={active == index + 1}
+                onClick={() => setActivePage(index + 1)}
+              />
+            ))}
           </div>
         </div>
-        <button className="btn-outline join-item btn">Next</button>
+        <button
+          className="btn-outline join-item btn"
+          onClick={() => setActivePage(active + 1)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

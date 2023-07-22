@@ -6,7 +6,7 @@ class ApiFeatures {
     paginate() {
         // 1- pagination 
         let page = +this.queryString.page > -1 ? +this.queryString.page : 1;
-        let limit = this.queryString.limit || 5;
+        let limit = this.queryString.limit || 4;
         let skip = this.queryString.skip || (page - 1) * limit;
         console.log("params:", this.queryString.page, "page: " + page, "limit: ", limit, "skip: ", skip);
         this.mongooseQuery.skip(skip).limit(limit);

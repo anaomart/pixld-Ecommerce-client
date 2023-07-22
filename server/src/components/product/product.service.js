@@ -59,7 +59,8 @@ exports.getProduct = catchAsyncError(async(req, res, next) => {
 });
 // get all prodcuts 
 exports.getAllProducts = catchAsyncError(async(req, res, next) => {
-    let apiFeatures = new ApiFeatures(ProductModel.find(), req.query).paginate().sort().fields().search().filter();
+    console.log(req.query)
+    let apiFeatures = new ApiFeatures(ProductModel.find(), req.query).paginate(2).sort().fields().search().filter();
     let Products = await apiFeatures.mongooseQuery;
     res.status(200).json({ page: apiFeatures.page, Products });
 });

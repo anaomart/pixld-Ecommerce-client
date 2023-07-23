@@ -49,9 +49,16 @@ const schema = Schema({
         type: Types.ObjectId,
         ref: "category",
     },
+    categoryName: {
+
+        String
+    },
     subcategory: {
         type: Types.ObjectId,
         ref: "subcategory",
+    },
+    subcategoryName: {
+        String
     },
 
     averageRating: {

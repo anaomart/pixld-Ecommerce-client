@@ -7,21 +7,34 @@ import {
 } from "react-icons/ai";
 import { BsFillBagFill } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { userRequest } from "../../utils/fetchMethods";
 
 export default function NavBar() {
   const [menuButtonClicked, setMenuButtonClicked] = useState(false);
   const [enterSearch, setEnterSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const mainPages = [
     { name: "Furniture", path: "/" },
     { name: "Home Care", path: "/" },
     { name: "Aromatherapy", path: "/" },
   ];
+
+  useEffect(() => {
+    const searchFun = async () => {
+      const response = await userRequest("/product?keyword=" + searchTerm);
+      console.log(response.data);
+      setSearchResult(response.data.Products);
+    };
+    searchFun();
+  }, [searchTerm]);
+
   const searchInputButton = () => {
     return enterSearch ? (
       <div
-        className={`flex scale-100  items-center gap-1 rounded-lg bg-white px-1   transition-[width] duration-700 ${2}`}
+        className={`relative flex scale-100 items-center gap-1 rounded-lg bg-white px-1   transition-[width] duration-700 ${2}`}
       >
         <AiOutlineSearch size={20} />
         <input
@@ -29,8 +42,21 @@ export default function NavBar() {
           type="text"
           name="search"
           placeholder="Search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           onBlur={() => setEnterSearch(false)}
         />
+        {/* result */}
+        <div className="absolute top-10 flex w-56 flex-col items-center gap-1 rounded-xl bg-gray-500  ">
+          {searchResult?.map((result) => (
+            <Link
+              to={`/product/${result._id}`}
+              className=" w-56 rounded-xl bg-white p-1 text-center"
+            >
+              {result.name}
+            </Link>
+          ))}
+        </div>
       </div>
     ) : (
       <AiOutlineSearch size={20} onClick={() => setEnterSearch(true)} />

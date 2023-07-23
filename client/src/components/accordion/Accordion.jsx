@@ -4,8 +4,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 export function Accordion({ productsName, name }) {
   const [isOpen, setIsOpen] = React.useState(false);
   console.log(productsName);
-  const checkedBox = {};
-  console.log(checkedBox);
+
   return (
     <div className="my-5 border-b py-2">
       <div
@@ -25,27 +24,11 @@ export function Accordion({ productsName, name }) {
           isOpen ? "flex" : "hidden"
         }`}
       >
-        {productsName
-          ? productsName.map((product) => (
-              <div
-                className="flex gap-3 "
-                onClick={() => {
-                  checkedBox[product] = checkedBox[product]
-                    ? !checkedBox[product]
-                    : true;
-                  console.log(checkedBox);
-                }}
-              >
-                <input
-                  type="checkbox"
-                  id={product}
-                  name={product}
-                  value={product}
-                />
-                <label for="oneName">{product}</label>
-              </div>
-            ))
-          : null}
+        <ul>
+          {productsName
+            ? productsName.map((product) => <li className="">{product}</li>)
+            : null}
+        </ul>
       </div>
     </div>
   );

@@ -15,7 +15,13 @@ class ApiFeatures {
     };
     filter() {
         // 2- filter  By White List 
-        let whiteList = ["price", "quantity", "keyword", "name", "slug", "description", "priceAfterDiscount", "color", "imageCover", "images", "sold", "ratingCount", "category", "subcategory", "brand", "createdAt", "updatedAt"]
+        let whiteList = [
+            "price", "quantity", "keyword", "name", "slug",
+            "description", "priceAfterDiscount", "color",
+            "imageCover", "images", "sold", "ratingCount",
+            "category", "subcategory", "brand", "createdAt",
+            "updatedAt"
+        ]
         let finalQuery = {};
         whiteList.map(ele => { this.queryString[ele] && (finalQuery[ele] = this.queryString[ele]) });
 
@@ -34,15 +40,17 @@ class ApiFeatures {
     }
     search() {
         if (this.queryString.keyword) {
-            console.log(this.queryString.keyword)
+            const keyword = this.queryString.keyword
+
             this.mongooseQuery.find({
                 $or: [
-                    { name: { $regex: this.queryString.keyword, $options: "i" } },
-                    { description: { $regex: this.queryString.keyword, $options: "i" } }
+                    { name: { $regex: keyword, $options: "i" } },
+                    { description: { $regex: keyword, $options: "i" } }
                 ]
             })
         };
-        return this;
+        return this
+
     }
     fields() {
         // Select Fields

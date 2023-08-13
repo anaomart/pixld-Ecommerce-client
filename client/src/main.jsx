@@ -6,7 +6,7 @@ import NavBar from "./components/nav/Navbar.jsx";
 import Footer from "./components/footer/Footer.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <HashRouter>
-    <div className="  md:m-auto md:w-10/12 ">
+    <div className=" hidden md:m-auto md:w-10/12 ">
       <NavBar />
     </div>
 

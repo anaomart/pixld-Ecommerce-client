@@ -109,6 +109,7 @@ export default function NavBar() {
     <nav
       className="  fixed z-20 flex w-full
       items-center
+      
       bg-white px-6
       py-2 md:mt-3 md:w-4/5
       md:rounded-xl md:py-1"

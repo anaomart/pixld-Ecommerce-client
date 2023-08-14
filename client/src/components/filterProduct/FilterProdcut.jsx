@@ -11,8 +11,8 @@ export default function FilterProdcut({ name, setFilter, filter }) {
     }
   };
   return (
-    <div className="my-5 border-b py-2" key={name}>
-      <div className="flex cursor-pointer items-center  justify-between">
+    <div className="my-5 border-b py-2 " key={name}>
+      <div className="flex cursor-pointer items-center justify-center gap-2   md:justify-between">
         <label>{name}</label>
         <input
           type="checkbox"

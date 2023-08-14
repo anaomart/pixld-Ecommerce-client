@@ -27,20 +27,15 @@ export default function ProductsDisplay() {
       );
       setProducts(response.data.Products);
     };
-    console.log(query);
     filterItems();
-    console.log(query);
-  }, [filter]);
+  }, [filter, activePage]);
   useEffect(() => {
     async function getCategories() {
       const subcategory = await publicRequest.get("/subcategory");
       setSubCategories(subcategory.data.Message);
-      // const products = await publicRequest.get(`/product?page=${activePage}`);
-      // console.log(products);
-      setProducts(products.data.Products);
     }
     getCategories();
-  }, [activePage]);
+  }, []);
   return (
     <section className="  px-4  py-3 md:m-auto md:w-10/12 ">
       <div className=" flex justify-between  py-3 ">

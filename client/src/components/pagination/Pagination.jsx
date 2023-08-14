@@ -7,7 +7,7 @@ export default function Pagination({ active, setActivePage }) {
         <div>
           <button
             className="btn-outline join-item btn mr-auto"
-            onClick={() => setActivePage(active - 1)}
+            onClick={() => active != 1 && setActivePage(active - 1)}
           >
             Previous page
           </button>

@@ -17,7 +17,7 @@ exports.createProduct = catchAsyncError(async(req, res, next) => {
         return next(new AppError("Please complete all required fields.", 406));
     }
     req.body.slug = slugify(req.body.name);
-
+    req.body.subcategoryName = slugify(req.body.subcategoryName);
     try {
         // Upload image cover
         const coverUploadResult = await cloudinary.uploader.upload(
@@ -59,9 +59,8 @@ exports.getProduct = catchAsyncError(async(req, res, next) => {
 });
 // get all prodcuts 
 exports.getAllProducts = catchAsyncError(async(req, res, next) => {
-    let apiFeatures = new ApiFeatures(ProductModel.find(), req.query).paginate(2).sort().fields().search().filter();
-    const Products = await new ApiFeatures(ProductModel.find(), req.query).search().mongooseQuery;
-    res.status(200).json({ page: apiFeatures.page, Products });
+    const Products = await new ApiFeatures(ProductModel.find(), req.query).paginate(2).sort().fields().search().filter().mongooseQuery
+    res.status(200).json({ page: Products.page, Products });
 });
 // delete Product
 exports.deleteProduct = catchAsyncError(async(req, res, next) => {

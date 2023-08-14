@@ -20,7 +20,7 @@ class ApiFeatures {
             "description", "priceAfterDiscount", "color",
             "imageCover", "images", "sold", "ratingCount",
             "category", "subcategory", "brand", "createdAt",
-            "updatedAt"
+            "updatedAt", "subcategoryName"
         ]
         let finalQuery = {};
         whiteList.map(ele => { this.queryString[ele] && (finalQuery[ele] = this.queryString[ele]) });
